@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <TabContainer :tabs="tabs" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TabContainer from './components/TabContainer.vue';
+import TableOne from './components/TableOne.vue';
+import TableTwo from './components/TableTwo.vue';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    TabContainer,
+    TableOne,
+    TableTwo,
+  },
+  data() {
+    return {
+      tabs: [
+        { name: 'Table 1', component: TableOne },
+        { name: 'Table 2', component: TableTwo },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

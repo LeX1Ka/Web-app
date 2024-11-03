@@ -43,13 +43,17 @@ app.get('/data', async (req, res) => {
 app.patch('/data', async (req, res) => {
   try {
     const data = await readJsonFile();
-    const updatedItem = req.body;
+    const { tableName, id, ...updatedFields } = req.body;
 
-    const tableItems = data.tables.tableOne.items;
-    const itemIndex = tableItems.findIndex(item => item.id === updatedItem.id);
+    if (!data.tables[tableName]) {
+      return res.status(400).json({ error: `Таблица ${tableName} не найдена` });
+    }
+
+    const tableItems = data.tables[tableName].items;
+    const itemIndex = tableItems.findIndex(item => item.id === id);
 
     if (itemIndex !== -1) {
-      Object.assign(tableItems[itemIndex], updatedItem);
+      Object.assign(tableItems[itemIndex], updatedFields);
 
       await writeJsonFile(data);
 
@@ -62,6 +66,7 @@ app.patch('/data', async (req, res) => {
   }
 });
 
+
 app.listen(3000, () => {
-  console.log('Сервер запущен на http://localhost:3000');
+  console.log('Сервер запущен на http://localhost:3000/data');
 });

@@ -18,8 +18,8 @@
         {
           "id": 1,
           "name": "RBUZ D2-63",
-          "costMeNoNDC": 222,
-          "costMeNDC": 90.65,
+          "costMeNoNDC": 111,
+          "costMeNDC": 0,
           "comission": 43.48,
           "price": 90.65,
           "myCost": 123.56,
@@ -204,7 +204,7 @@
         {
           "id": 1,
           "name": "RBUZ 234",
-          "costMeNoNDC": 522,
+          "costMeNoNDC": 222,
           "costMeNDC": 34,
           "comission": 434,
           "price": 23,
